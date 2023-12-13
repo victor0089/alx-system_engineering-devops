@@ -9,7 +9,7 @@ global
         daemon
 
         # Setting up SSL from tutorial
-        # https://www.digitalocean.com/community/tutorials/how-to-secure-haproxy-with-let-s-encrypt-on-ubuntu-14-04
+        # https://www.digitalocean.com/community/tutorials/how-to-secure-haproxy-with-let-s-encrypt-on-ubuntu-16-04
         maxconn 2048
         tune.ssl.default-dh-param 2048
 
@@ -60,8 +60,8 @@ frontend www-https
 backend www-backend
         balance roundrobin
         redirect scheme https code 301 if !{ ssl_fc }
-        server 338-web-01 35.229.54.225:80 check
-        server 338-web-02 35.231.225.251:80 check
+#       server 349269-web-01 100.25.134.93:80 check
+#       server 349269-web-02 35.175.134.83:80 check
 
 backend letsencrypt-backend
         server letsencrypt 127.0.0.1:54321
@@ -71,5 +71,5 @@ backend letsencrypt-backend
 #       balance roundrobin
 #       option httpclose
 #       option forwardfor
-#       server 338-web-01 35.229.54.225:80 check
-#       server 338-web-02 35.231.225.251:80 check
+#       server 349269-web-01 100.25.134.93:80 check
+#       server 349269-web-02 35.175.134.83:80 check
