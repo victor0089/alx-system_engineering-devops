@@ -1,3 +1,4 @@
+#!/usr/bin/env puppet
 package { 'python3-pip':
   ensure => installed,
 }
