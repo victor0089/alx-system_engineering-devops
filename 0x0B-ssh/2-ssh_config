@@ -1,4 +1,9 @@
 # ssh config file
+Include /etc/ssh/ssh_config.d/*.conf
 Host *
       PasswordAuthentication no
       IdentifyFile ~/.ssh/school
+      PubkeyAuthentication yes
+    SendEnv LANG LC_*
+    HashKnownHosts yes
+    GSSAPIAuthentication yes
