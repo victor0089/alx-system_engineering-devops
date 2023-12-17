@@ -36,7 +36,7 @@ defaults
         errorfile 504 /etc/haproxy/errors/504.http
 frontend website
         bind :80
-        bind :443 ssl crt /etc/haproxy/ssl/all.pem
+        bind :443 ssl crt /etc/haproxy/ssl/www.viroo.tech.pem
         default_backend servers
 backend servers
         balance roundrobin
