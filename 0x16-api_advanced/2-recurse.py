@@ -1,9 +1,20 @@
 #!/usr/bin/python3
-"""Function to query a list of all hot posts on a given Reddit subreddit."""
+"""
+Module to query the Reddit API and return the number of subscribers for a given subreddit.
+"""
+
 import requests
 
-
 def number_of_subscribers(subreddit):
+    """
+    Get the number of subscribers for a given subreddit.
+
+    Args:
+        subreddit (str): The name of the subreddit.
+
+    Returns:
+        int: The number of subscribers or 0 if the subreddit is invalid.
+    """
     # Reddit API endpoint for subreddit information
     url = f'https://www.reddit.com/r/{subreddit}/about.json'
     
