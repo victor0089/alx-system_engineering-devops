@@ -1,6 +1,10 @@
 #!/usr/bin/python3
-"""Module thatconsumes theReddit API and returnsthe number ofsubscribers"""
+"""Module that consumes the Reddit API and returns the number of subscribers"""
 import requests
+from requests.packages.urllib3.exceptions import RequestsDependencyWarning
+
+# Suppress only the relevant warning from urllib3 needed for requests
+requests.packages.urllib3.disable_warnings(RequestsDependencyWarning)
 
 
 def number_of_subscribers(subreddit):
