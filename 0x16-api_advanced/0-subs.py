@@ -2,6 +2,7 @@
 """ How many subs? """
 import requests
 
+
 def number_of_subscribers(subreddit):
     """ Returns subscriber count of subreddit or 0 """
     from requests import get
