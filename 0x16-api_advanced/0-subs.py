@@ -2,30 +2,36 @@
 """ How many subs?????????? """
 
 
+import requests
+
 def number_of_subscribers(subreddit):
-    """ Returns subscriber count of subreddit or 0 """
-    from requests import get
+    # Replace these values with your Reddit application details
+    client_id = 'E9UcaSW-udVFniBFD8Cf6w'
+    client_secret = 'tiSdtSn31T0MlzpPz3ZGyme7VhAuSg'
+    user_agent = 'victor/1.0 (by study)'
 
-    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    # Reddit API endpoint for subreddit information
+    url = f'https://oauth.reddit.com/r/{subreddit}/about.json'
 
-    headers = {'user-agent': 'my-app/0.0.1'}
+    # Set up the headers with authentication
+    auth = requests.auth.HTTPBasicAuth(client_id, client_secret)
+    headers = {'User-Agent': user_agent}
 
-    r = get(url, headers=headers, allow_redirects=False)
+    # Make a GET request to the API
+    response = requests.get(url, headers=headers, auth=auth, allow_redirects=False)
 
-    if r.status_code != 200:
+    # Check if the request was successful (status code 200) and not redirected
+    if response.status_code == 200 and not response.is_redirect:
+        # Parse the JSON response and extract the number of subscribers
+        data = response.json()
+        subscribers_count = data['data']['subscribers']
+        return subscribers_count
+    else:
+        # Return 0 for invalid subreddit or other errors
         return 0
 
-    try:
-        js = r.json()
-
-    except ValueError:
-        return 0
-
-    data = js.get("data")
-
-    if data:
-        sub_count = data.get("subscribers")
-        if sub_count:
-            return sub_count
-
-    return 0
+# Example usage
+if __name__ == '__main__':
+    subreddit_name = input("Enter the subreddit name: ")
+    result = number_of_subscribers(subreddit_name)
+    print(f"Number of subscribers for '{subreddit_name}': {result}")
