@@ -1,15 +1,13 @@
 #!/usr/bin/python3
 """ How many subs? """
-import requests
+from requests import get
 
 
 def number_of_subscribers(subreddit):
     """ Returns subscriber count of subreddit or 0 """
-    from requests import get
-
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
 
-    headers = {'user-agent': 'victor/1.0'}
+    headers = {'user-agent': 'victor/1.0 (RatioForward4396)'}
 
     r = get(url, headers=headers, allow_redirects=False)
 
