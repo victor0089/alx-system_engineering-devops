@@ -1,35 +1,31 @@
 #!/usr/bin/python3
-"""Module that consumes the Reddit API and returns the number of subscribers"""
-import requests
+""" How many subs?????????? """
 
 
 def number_of_subscribers(subreddit):
-    """Queries the Reddit API and returns thenumber of subscribers(not
-    active users,total subscribers) for a given subreddit.
+    """ Returns subscriber count of subreddit or 0 """
+    from requests import get
 
-    If not a validsubreddit, return 0.
-    Invalid subreddits mayreturn a redirect to search results. Ensure that
-    you are not following redirects.
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
 
-    Args:
-        subreddit (str): subreddit
+    headers = {'user-agent': 'my-app/0.0.1'}
 
-    Returns:
-        int: number of subscribers
-    """
-    base_url = 'https://www.reddit.com/r/'
+    r = get(url, headers=headers, allow_redirects=False)
 
-    url = '{}{}/about.json'.format(base_url, subreddit)
-    headers = {
-        'User-Agent':
-        'Mozilla/5.0 (Windows; U; Windows NT 5.1; de; rv:1.9.2.3) \
-        Gecko/20100401 Firefox/3.6.3 (FM Scene 4.6.1)'
-    }
-    results = requests.get(
-        url,
-        headers=headers,
-        allow_redirects=False
-    )
-    if results.status_code == 200:
-        return results.json()['data']['subscribers']
+    if r.status_code != 200:
+        return 0
+
+    try:
+        js = r.json()
+
+    except ValueError:
+        return 0
+
+    data = js.get("data")
+
+    if data:
+        sub_count = data.get("subscribers")
+        if sub_count:
+            return sub_count
+
     return 0
