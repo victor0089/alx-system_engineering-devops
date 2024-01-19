@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 """ How many subs?????????? """
-
-
 import requests
 
 def number_of_subscribers(subreddit):
@@ -29,9 +27,3 @@ def number_of_subscribers(subreddit):
     else:
         # Return 0 for invalid subreddit or other errors
         return 0
-
-# Example usage
-if __name__ == '__main__':
-    subreddit_name = input("Enter the subreddit name: ")
-    result = number_of_subscribers(subreddit_name)
-    print(f"Number of subscribers for '{subreddit_name}': {result}")
