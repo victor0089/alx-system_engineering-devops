@@ -6,7 +6,7 @@ import requests
 def number_of_subscribers(subreddit):
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     headers = {'user-agent': 'victor/1.0 (by RatioForward4396)'}
-    
+
     r = requests.get(url, headers=headers, allow_redirects=False)
 
     print("Response Status Code:", r.status_code)
