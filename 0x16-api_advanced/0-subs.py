@@ -9,17 +9,16 @@ def number_of_subscribers(subreddit):
     # Replace these values with your Reddit application details
     client_id = 'E9UcaSW-udVFniBFD8Cf6w'
     client_secret = 'tiSdtSn31T0MlzpPz3ZGyme7VhAuSg'
-    user_agent = 'victor (by RatioForward4396)'
-
+    head = {'User-Agent': 'victor (by RatioForward4396)'}
     # Reddit API endpoint for subreddit information
     url = 'https://oauth.reddit.com/r/{}/about.json'.format(subreddit)
 
     # Set up the headers with authentication
     auth = requests.auth.HTTPBasicAuth(client_id, client_secret)
-    headers = {'User-Agent': user_agent}
+    header = head
 
     # Make a GET request to the API
-    response = requests.get(url, headers=headers, auth=auth,
+    response = requests.get(url, headers=header, auth=auth,
                             allow_redirects=False)
 
     # Check if the request was successful (status code 200) and not redirected
