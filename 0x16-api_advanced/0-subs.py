@@ -17,7 +17,8 @@ def number_of_subscribers(subreddit):
     headers = {'User-Agent': user_agent}
 
     # Make a GET request to the API
-    response = requests.get(url, headers=headers, auth=auth, allow_redirects=False)
+    response = requests.get(url, headers=headers, auth=auth,
+                            allow_redirects=False)
 
     # Check if the request was successful (status code 200) and not redirected
     if response.status_code == 200 and not response.is_redirect:
