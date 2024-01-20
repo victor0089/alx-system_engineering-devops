@@ -10,7 +10,7 @@ def number_of_subscribers(subreddit):
     user_agent = 'victor/1.0 (by RatioForward4396)'
 
     # Reddit API endpoint for subreddit information
-    url = f'https://oauth.reddit.com/r/{subreddit}/about.json'
+    url = 'https://oauth.reddit.com/r/{}/about.json'.format(subreddit)
 
     # Set up the headers with authentication
     auth = requests.auth.HTTPBasicAuth(client_id, client_secret)
