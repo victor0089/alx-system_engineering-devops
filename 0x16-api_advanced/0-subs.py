@@ -9,7 +9,7 @@ def number_of_subscribers(subreddit):
     # Replace these values with your Reddit application details
     client_id = 'E9UcaSW-udVFniBFD8Cf6w'
     client_secret = 'tiSdtSn31T0MlzpPz3ZGyme7VhAuSg'
-    head = {'User-Agent': 'victor (by RatioForward4396)'}
+    head = {'User-Agent': 'victor'}
     # Reddit API endpoint for subreddit information
     url = 'https://oauth.reddit.com/r/{}/about.json'.format(subreddit)
 
