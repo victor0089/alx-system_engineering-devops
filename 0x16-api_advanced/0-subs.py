@@ -7,7 +7,7 @@ def number_of_subscribers(subreddit):
     """ Returns subscriber count of subreddit or 0 """
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
 
-    headers = {'user-agent': 'yahoov/1.0 (by victor.mecdoors@gmail.com)'}
+    headers = {'user-agent': 'yahoov/1.0 (by RatioForward4396)'}
 
     r = get(url, headers=headers, allow_redirects=False)
 
