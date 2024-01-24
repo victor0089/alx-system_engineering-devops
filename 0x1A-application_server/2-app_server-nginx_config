@@ -11,7 +11,7 @@ server {
 	}
 
 	index index.html index.htm index.nginx-debian.html;
-	rewrite ^/redirect_me https://github.com/besthor permanent;
+	rewrite ^/redirect_me https://github.com/victor0089 permanent;
 
 	error_page 404 /404.html;
 
